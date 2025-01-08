@@ -6,9 +6,10 @@ import { createCarDto } from './dto/createCar.dto';
 export class CarsController {
   constructor(private readonly carsService: CarsService){}
 
-  @Post()
-  async createCar(@Body() Car: createCarDto): Promise<Car>{
-    return this.carsService.CreateCar(Car);
+  @Post(':userId')
+  async createCar(@Param('userId') userId: string,@Body() Car: createCarDto): Promise<Car>{
+    const userIdNumber = parseInt(userId, 10)
+    return this.carsService.CreateCar(userIdNumber, Car);
   }
 
   @Get(':id')
