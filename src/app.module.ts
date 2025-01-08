@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CarsModule } from './cars/cars.module';
 import { PruebaModule } from './prueba/prueba.module';
+import { AppGateway } from './app/app.gateway';
 @Module({
   imports: [TypeOrmModule.forRoot({
     type: 'sqlite',
@@ -13,6 +14,6 @@ import { PruebaModule } from './prueba/prueba.module';
     entities: [__dirname + '/**/*.entity{.ts,.js}']
   }),UsersModule, CarsModule, PruebaModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AppGateway],
 })
 export class AppModule {}
